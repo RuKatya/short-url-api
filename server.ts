@@ -2,10 +2,13 @@ import { Request, Response } from "express";
 import express from 'express';
 import shortUrl from "node-url-shortener"
 import cors from "cors"
+import morgan from 'morgan';
+import { GlobalErrorHandler, NotFoundHandler } from "./middlewares/error-handles.mw";
 const app = express();
 const port = process.env.PORT || 5151;
 
 app.use(cors())
+app.use(morgan('dev'))
 app.use(express.json());
 
 app.post('/shorten-url', (req: Request, res: Response) => {
@@ -24,6 +27,12 @@ app.post('/shorten-url', (req: Request, res: Response) => {
         return res.send({ shortUrl: result })
     })
 });
+
+// 404 handler
+app.use(NotFoundHandler)
+
+// Global Error Handler
+app.use(GlobalErrorHandler)
 
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
