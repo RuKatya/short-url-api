@@ -11,10 +11,6 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Express + TypeScript Server');
 });
 
-console.log("qeqweqwe")
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });
-
-
-// // "exec": "concurrently \"npx tsc --watch\" \"ts-node --files ./server.ts\""
