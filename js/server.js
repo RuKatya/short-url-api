@@ -11,7 +11,6 @@ const port = process.env.PORT || 5151;
 app.get('/', (req, res) => {
     res.send('Express + TypeScript Server');
 });
-console.log('sdfsdfefwewefwergergef');
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });
