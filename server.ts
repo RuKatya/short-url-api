@@ -11,6 +11,9 @@ app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json());
 
+// status check points
+app.get('/', (req: Request, res: Response) => res.sendStatus(200))
+
 app.post('/shorten-url', (req: Request, res: Response) => {
     const { url } = req.body;
     console.log(url)
